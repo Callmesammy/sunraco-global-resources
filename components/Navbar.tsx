@@ -114,7 +114,7 @@ export default function Navbar({ onOpenCalendly, isDark = false }: NavbarProps) 
                   className="relative inline-flex items-center cursor-pointer group py-1 px-1"
                 >
                   {isTarget && (
-                    <div className="absolute top-1/2 left-1/2 w-16 md:w-20 h-2 md:h-2.5 bg-[#C084FC] pointer-events-none z-0 rounded-xs shadow-[0_0_16px_rgba(192,132,252,0.85)] animate-circle-spin" />
+                    <div className="absolute top-1/2 left-1/2 w-16 md:w-20 h-2 md:h-2.5 bg-[#C084FC] pointer-events-none z-0 rounded-xs animate-circle-spin" />
                   )}
 
                   {item.action ? (
@@ -135,12 +135,12 @@ export default function Navbar({ onOpenCalendly, isDark = false }: NavbarProps) 
           </nav>
         </div>
 
-        {/* Mobile Header Menu Button */}
-        <div className="md:hidden">
+        {/* Mobile Hamburger Toggle Button */}
+        <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-3 rounded-full bg-black text-white shadow-xl flex items-center justify-center cursor-pointer hover:bg-[#FF5500] transition-colors"
-            aria-label="Toggle Mobile Navigation"
+            className="p-3 rounded-full bg-black text-white flex items-center justify-center cursor-pointer hover:bg-[#FF5500] transition-colors"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>

@@ -132,7 +132,7 @@ export default function CapabilitiesSlider({ onOpenCalendly }: CapabilitiesProps
             return (
               <div
                 key={cap.id}
-                className="group relative w-[85vw] sm:w-[500px] md:w-[550px] h-[580px] rounded-3xl bg-[#141414] border border-white/10 overflow-hidden flex flex-col justify-between p-8 hover:border-[#FF5500]/60 transition-all duration-500 shadow-2xl flex-shrink-0"
+                className="group relative w-[85vw] sm:w-[500px] md:w-[550px] h-[580px] rounded-3xl bg-[#141414] border border-white/10 overflow-hidden flex flex-col justify-between p-8 hover:border-[#FF5500]/60 transition-all duration-500 flex-shrink-0"
               >
                 {/* Background Image with Hover Parallax Zoom */}
                 <div

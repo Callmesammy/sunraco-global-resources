@@ -202,7 +202,7 @@ export default function IntroPreloader({ onComplete }: IntroPreloaderProps) {
         {/* Center Dark Space Core */}
         <div
           ref={blockCenterRef}
-          className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-[#121212] z-20 shadow-2xl border border-zinc-700 transform-gpu"
+          className="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-[#121212] z-20 border border-zinc-700 transform-gpu"
         />
         {/* Bottom Left Dark Space */}
         <div
@@ -221,25 +221,25 @@ export default function IntroPreloader({ onComplete }: IntroPreloaderProps) {
         {/* Strike 1: Top Horizontal Laser Strike */}
         <div
           ref={strike1Ref}
-          className="absolute top-[25%] left-0 w-full h-2 md:h-3 bg-white shadow-[0_0_20px_#FFFFFF] transform-gpu opacity-0"
+          className="absolute top-[25%] left-0 w-full h-2 md:h-3 bg-white transform-gpu opacity-0"
         />
 
         {/* Strike 2: Center Vertical Laser Strike */}
         <div
           ref={strike2Ref}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-2 md:w-3 h-full bg-white shadow-[0_0_20px_#FFFFFF] transform-gpu opacity-0"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-2 md:w-3 h-full bg-white transform-gpu opacity-0"
         />
 
         {/* Strike 3: Diagonal Slash 1 */}
         <div
           ref={strike3Ref}
-          className="absolute top-1/2 left-0 w-[150vw] h-2.5 md:h-3.5 bg-white shadow-[0_0_25px_#FFFFFF] -rotate-45 origin-left transform-gpu opacity-0"
+          className="absolute top-1/2 left-0 w-[150vw] h-2.5 md:h-3.5 bg-white -rotate-45 origin-left transform-gpu opacity-0"
         />
 
         {/* Strike 4: Diagonal Slash 2 */}
         <div
           ref={strike4Ref}
-          className="absolute top-1/2 right-0 w-[150vw] h-2.5 md:h-3.5 bg-white shadow-[0_0_25px_#FFFFFF] rotate-45 origin-right transform-gpu opacity-0"
+          className="absolute top-1/2 right-0 w-[150vw] h-2.5 md:h-3.5 bg-white rotate-45 origin-right transform-gpu opacity-0"
         />
       </div>
 
@@ -251,7 +251,7 @@ export default function IntroPreloader({ onComplete }: IntroPreloaderProps) {
         {/* SHARP RECTANGULAR DARK BOX CONTAINER */}
         <div
           ref={darkBoxContainerRef}
-          className="relative w-full h-12 sm:h-16 md:h-18 bg-[#0A0A0A] rounded-none border border-black p-1 shadow-2xl overflow-hidden transform-gpu will-change-transform"
+          className="relative w-full h-12 sm:h-16 md:h-18 bg-[#0A0A0A] rounded-none border border-black p-1 overflow-hidden transform-gpu will-change-transform"
         >
           {/* MONOCHROME INNER FILL */}
           <div

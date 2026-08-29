@@ -84,7 +84,7 @@ export default function NextKineticShowcase({}: NextKineticShowcaseProps) {
       {/* SHARP ZOOMED MP4 VIDEO CONTAINER */}
       <div
         ref={videoContainerRef}
-        className="absolute w-[94vw] max-w-7xl h-[55vh] sm:h-[78vh] rounded-none overflow-hidden shadow-2xl bg-black border border-black/10 z-30 opacity-0 transform-gpu pointer-events-auto"
+        className="absolute w-[94vw] max-w-7xl h-[55vh] sm:h-[78vh] rounded-none overflow-hidden bg-black border border-black/10 z-30 opacity-0 transform-gpu pointer-events-auto"
       >
         <video
           src="/so_i_want_a_mini_animation_on.mp4"

@@ -67,7 +67,7 @@ export default function Footer({ onOpenCalendly }: FooterProps) {
               <span className="hidden sm:inline text-zinc-400">|</span>
               <a
                 href="tel:+2348056031383"
-                className="hover:text-[#FF5500] transition-colors cursor-pointer font-black text-xs sm:text-lg text-[#FF5500] bg-black text-white px-3 py-1 rounded-sm shadow-sm"
+                className="hover:text-[#FF5500] transition-colors cursor-pointer font-black text-xs sm:text-lg text-[#FF5500] bg-black text-white px-3 py-1 rounded-sm"
               >
                 +234 805 603 1383
               </a>

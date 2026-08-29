@@ -46,12 +46,13 @@ export default function CalendlyModal({ isOpen, onClose }: CalendlyModalProps) {
 
       {/* Modal Container */}
       <div
+        ref={modalRef}
         data-lenis-prevent="true"
         data-lenis-prevent-touch="true"
         data-lenis-prevent-wheel="true"
         onWheel={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
-        className="relative z-10 w-full max-w-3xl rounded-none bg-[#141414] border-2 border-white/20 p-6 sm:p-10 text-white shadow-2xl overflow-y-auto max-h-[90vh] overscroll-contain animate-in zoom-in-95 duration-300"
+        className="relative z-10 w-full max-w-3xl rounded-none bg-[#141414] border-2 border-white/20 p-6 sm:p-10 text-white overflow-y-auto max-h-[90vh] overscroll-contain animate-in zoom-in-95 duration-300"
       >
         {/* Top Header */}
         <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-6">

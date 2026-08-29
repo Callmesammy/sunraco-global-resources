@@ -32,7 +32,7 @@ function RollingCheckbox({ isSelected }: { isSelected: boolean }) {
       ref={boxRef}
       className={`w-7 h-7 rounded-none border-2 transition-all flex items-center justify-center shrink-0 transform-gpu will-change-transform ${
         isSelected
-          ? "bg-white border-white text-black shadow-[0_0_15px_rgba(255,255,255,0.9)]"
+          ? "bg-white border-white text-black"
           : "bg-[#1A1A1A] border-white/40 group-hover:border-white"
       }`}
     >
@@ -66,7 +66,7 @@ function AnimatedPurpleAccent() {
   return (
     <div
       ref={barRef}
-      className="w-3.5 h-8 sm:w-4 sm:h-10 bg-gradient-to-b from-[#C084FC] via-[#A855F7] to-[#7E22CE] rounded-xs shadow-[0_0_22px_rgba(168,85,247,0.95)] transform-gpu will-change-transform"
+      className="w-3.5 h-8 sm:w-4 sm:h-10 bg-gradient-to-b from-[#C084FC] via-[#A855F7] to-[#7E22CE] rounded-xs transform-gpu will-change-transform"
     />
   );
 }
@@ -214,7 +214,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
         data-lenis-prevent-wheel="true"
         onWheel={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
-        className="relative z-10 w-full max-w-4xl bg-[#0D0D0D] border-2 border-white/20 rounded-none shadow-2xl p-5 sm:p-8 md:p-8 text-white overflow-y-auto max-h-[88vh] sm:max-h-[90vh] flex flex-col justify-between overscroll-contain transform-gpu"
+        className="relative z-10 w-full max-w-4xl bg-[#0D0D0D] border-2 border-white/20 rounded-none p-5 sm:p-8 md:p-8 text-white overflow-y-auto max-h-[88vh] sm:max-h-[90vh] flex flex-col justify-between overscroll-contain transform-gpu"
       >
         {/* CLOSE "X" BUTTON */}
         <button
@@ -233,7 +233,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
             className="relative cursor-pointer py-1 px-2 flex items-center gap-2 group"
           >
             {step === 1 && (
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none shadow-[0_0_20px_rgba(168,85,247,0.8)] -rotate-3 z-0 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none -rotate-3 z-0 animate-pulse" />
             )}
             <span className={`relative z-10 transition-colors ${step === 1 ? "text-white font-black px-4 py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
               Details
@@ -250,7 +250,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
             className="relative cursor-pointer py-1 px-2 flex items-center gap-2 group"
           >
             {step === 2 && (
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none shadow-[0_0_20px_rgba(168,85,247,0.8)] -rotate-3 z-0 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none -rotate-3 z-0 animate-pulse" />
             )}
             <span className={`relative z-10 transition-colors ${step === 2 ? "text-white font-black px-4 py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
               Project Type
@@ -267,7 +267,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
             className="relative cursor-pointer py-1 px-2 flex items-center gap-2 group"
           >
             {step === 3 && (
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none shadow-[0_0_20px_rgba(168,85,247,0.8)] -rotate-3 z-0 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none -rotate-3 z-0 animate-pulse" />
             )}
             <span className={`relative z-10 transition-colors ${step === 3 ? "text-white font-black px-4 py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
               Budget

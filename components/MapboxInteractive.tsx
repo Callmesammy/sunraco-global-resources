@@ -102,7 +102,7 @@ export default function MapboxInteractive() {
       {/* Interactive Operations Canvas & Sidebar Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch flex-1">
         {/* Dark Tactical Map Simulation Canvas */}
-        <div className="lg:col-span-8 relative min-h-[450px] md:min-h-[550px] rounded-3xl bg-[#141414] border border-white/10 overflow-hidden flex flex-col justify-between p-8 bg-grid-pattern shadow-2xl">
+        <div className="lg:col-span-8 relative min-h-[450px] md:min-h-[550px] rounded-3xl bg-[#141414] border border-white/10 overflow-hidden flex flex-col justify-between p-8 bg-grid-pattern">
           {/* Subtle World Map Vector Background Overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-800/20 via-[#141414]/90 to-[#141414] pointer-events-none" />
 
@@ -125,7 +125,7 @@ export default function MapboxInteractive() {
                   onClick={() => setSelectedHub(hub)}
                   className={`group relative p-4 rounded-2xl border text-left transition-all duration-300 ${
                     isSelected
-                      ? "bg-[#FF5500] border-[#FF5500] text-black shadow-[0_0_25px_rgba(255,85,0,0.4)] scale-105"
+                      ? "bg-[#FF5500] border-[#FF5500] text-black scale-105"
                       : "bg-black/60 border-white/10 text-white hover:border-[#FF5500]/50"
                   }`}
                 >
@@ -165,7 +165,7 @@ export default function MapboxInteractive() {
         </div>
 
         {/* Selected Hub Details Panel */}
-        <div className="lg:col-span-4 rounded-3xl bg-[#141414] border border-white/10 p-8 flex flex-col justify-between shadow-2xl">
+        <div className="lg:col-span-4 rounded-3xl bg-[#141414] border border-white/10 p-8 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-6">
               <span className="px-3 py-1 rounded-full bg-[#FF5500]/10 border border-[#FF5500]/20 font-mono text-[10px] text-[#FF5500] uppercase font-bold tracking-wider">

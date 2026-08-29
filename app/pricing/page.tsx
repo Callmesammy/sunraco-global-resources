@@ -151,7 +151,7 @@ export default function PricingPage() {
                 ref={(el) => {
                   cardsRef.current[idx] = el;
                 }}
-                className={`relative bg-white rounded-none border-2 border-black shadow-xl flex flex-col justify-between p-2 sm:p-3 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group ${
+                className={`relative bg-white rounded-none border-2 border-black flex flex-col justify-between p-2 sm:p-3 transition-all duration-300 hover:-translate-y-2 group ${
                   tier.popular ? "ring-2 ring-[#7E22CE]" : ""
                 }`}
               >
@@ -160,7 +160,7 @@ export default function PricingPage() {
                   <div className="relative overflow-hidden mb-6">
                     {tier.graphic}
                     {tier.popular && (
-                      <div className="absolute top-4 right-4 bg-[#7E22CE] text-white font-mono text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-none shadow-lg">
+                      <div className="absolute top-4 right-4 bg-[#7E22CE] text-white font-mono text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-none">
                         POPULAR CHOICE
                       </div>
                     )}

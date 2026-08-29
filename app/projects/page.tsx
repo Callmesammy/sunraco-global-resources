@@ -131,7 +131,7 @@ export default function ProjectsPage() {
       bgClass: "bg-[#6366F1] text-white md:col-span-2", // Electric Indigo / Neon Purple (Full Width Hero Box)
       graphic: (
         <div className="w-full h-80 sm:h-[440px] flex flex-col items-center justify-center p-8 relative overflow-hidden bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#4F46E5]">
-          <div className="font-sans font-black text-5xl sm:text-7xl lg:text-9xl tracking-tighter text-white text-center drop-shadow-2xl">
+          <div className="font-sans font-black text-5xl sm:text-7xl lg:text-9xl tracking-tighter text-white text-center">
             Ping Social<span className="text-[#FF5500]">.</span>
           </div>
           <div className="mt-4 font-mono text-xs sm:text-sm text-indigo-100 uppercase tracking-widest bg-white/15 px-6 py-2 rounded-full font-bold backdrop-blur-md border border-white/20">

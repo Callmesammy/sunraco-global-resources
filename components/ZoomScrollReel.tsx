@@ -255,11 +255,11 @@ export default function ZoomScrollReel() {
           </svg>
           <div
             ref={slice2Ref}
-            className="absolute top-[42%] right-[5%] w-64 md:w-80 h-16 md:h-20 bg-[#0A0A0A] rounded-none shadow-2xl z-20 opacity-0"
+            className="absolute top-[42%] right-[5%] w-64 md:w-80 h-16 md:h-20 bg-[#0A0A0A] rounded-none z-20 opacity-0"
           />
           <div
             ref={slice3Ref}
-            className="absolute bottom-[8%] left-[-15%] w-80 md:w-[420px] h-20 md:h-24 bg-[#0A0A0A] rounded-none shadow-2xl z-20 opacity-0"
+            className="absolute bottom-[8%] left-[-15%] w-80 md:w-[420px] h-20 md:h-24 bg-[#0A0A0A] rounded-none z-20 opacity-0"
           />
         </div>
 
@@ -278,7 +278,7 @@ export default function ZoomScrollReel() {
             Integrating 60FPS GSAP physics, shear reveals & interactive cursor spotlights.
           </div>
           <div ref={line5Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
-            Digital Brand Refreshes, Logo Design, UI/UX Mockups, Sales Decks & Assets.
+            Digital brand refreshes, logo design, UI/UX mockups, sales decks & assets.
           </div>
           <div ref={line6Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             Precision engineering in motion. Institutional grade cloud scalability.
@@ -292,7 +292,7 @@ export default function ZoomScrollReel() {
       {/* STAGE A: CLEAN KINETIC DARK PANEL */}
       <div
         ref={darkPanelRef}
-        className="fixed inset-0 w-full h-full min-h-screen z-40 bg-[#0A0A0A] text-white px-6 sm:px-12 md:px-20 pt-16 sm:pt-20 pb-8 sm:pb-12 flex flex-col justify-between overflow-hidden shadow-2xl opacity-0 scale-50 rounded-none pointer-events-auto hidden transform-gpu will-change-transform"
+        className="fixed inset-0 w-full h-full min-h-screen z-40 bg-[#0A0A0A] text-white px-6 sm:px-12 md:px-20 pt-16 sm:pt-20 pb-8 sm:pb-12 flex flex-col justify-between overflow-hidden opacity-0 scale-50 rounded-none pointer-events-auto hidden transform-gpu will-change-transform"
       >
         {/* TOP SUBMENU BAR - STICKY, HIGH-CONTRAST, 100% CLICKABLE */}
         <div className="w-full max-w-7xl mx-auto flex items-center gap-6 sm:gap-10 font-sans font-bold text-lg sm:text-2xl tracking-tight z-50 pt-4 pb-4">
@@ -301,11 +301,11 @@ export default function ZoomScrollReel() {
             className="relative inline-flex items-center gap-2.5 cursor-pointer whitespace-nowrap hover:scale-105 transition-all pointer-events-auto group"
           >
             {activeTab === "about" ? (
-              <div className="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_16px_rgba(255,85,0,0.9)]" />
+              <div className="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#FF5500] -rotate-45 rounded-xs" />
             ) : (
               <div className="w-2.5 h-6 sm:w-3 sm:h-7 bg-zinc-700/60 -rotate-45 rounded-xs group-hover:bg-[#FF5500]/60 transition-colors" />
             )}
-            <span className={activeTab === "about" ? "text-white font-black text-xl sm:text-2xl drop-shadow-md" : "text-zinc-300 font-bold hover:text-white"}>
+            <span className={activeTab === "about" ? "text-white font-black text-xl sm:text-2xl" : "text-zinc-300 font-bold hover:text-white"}>
               About Us
             </span>
           </button>
@@ -317,11 +317,11 @@ export default function ZoomScrollReel() {
             className="relative inline-flex items-center gap-2.5 cursor-pointer whitespace-nowrap hover:scale-105 transition-all pointer-events-auto group"
           >
             {activeTab === "approach" ? (
-              <div className="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_16px_rgba(255,85,0,0.9)]" />
+              <div className="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#FF5500] -rotate-45 rounded-xs" />
             ) : (
               <div className="w-2.5 h-6 sm:w-3 sm:h-7 bg-zinc-700/60 -rotate-45 rounded-xs group-hover:bg-[#FF5500]/60 transition-colors" />
             )}
-            <span className={activeTab === "approach" ? "text-white font-black text-xl sm:text-2xl drop-shadow-md" : "text-zinc-300 font-bold hover:text-white"}>
+            <span className={activeTab === "approach" ? "text-white font-black text-xl sm:text-2xl" : "text-zinc-300 font-bold hover:text-white"}>
               Approach
             </span>
           </button>
@@ -333,11 +333,11 @@ export default function ZoomScrollReel() {
             className="relative inline-flex items-center gap-2.5 cursor-pointer whitespace-nowrap hover:scale-105 transition-all pointer-events-auto group"
           >
             {activeTab === "why" ? (
-              <div className="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_16px_rgba(255,85,0,0.9)]" />
+              <div className="w-3.5 h-7 sm:w-4 sm:h-9 bg-[#FF5500] -rotate-45 rounded-xs" />
             ) : (
               <div className="w-2.5 h-6 sm:w-3 sm:h-7 bg-zinc-700/60 -rotate-45 rounded-xs group-hover:bg-[#FF5500]/60 transition-colors" />
             )}
-            <span className={activeTab === "why" ? "text-white font-black text-xl sm:text-2xl drop-shadow-md" : "text-zinc-300 font-bold hover:text-white"}>
+            <span className={activeTab === "why" ? "text-white font-black text-xl sm:text-2xl" : "text-zinc-300 font-bold hover:text-white"}>
               Why sgr?
             </span>
           </button>

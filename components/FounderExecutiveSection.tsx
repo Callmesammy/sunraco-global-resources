@@ -155,7 +155,7 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           {/* PORTRAIT CARD FRAME - SHARP 90° CORNERS & VERTICAL PORTRAIT ASPECT RATIO ON MOBILE */}
           <div
             ref={portraitCardRef}
-            className="relative w-full max-w-[260px] sm:max-w-none mx-auto h-[320px] sm:h-[420px] lg:h-[460px] rounded-none p-1.5 sm:p-2.5 bg-zinc-900 border border-black/20 shadow-2xl transform-gpu will-change-transform"
+            className="relative w-full max-w-[260px] sm:max-w-none mx-auto h-[320px] sm:h-[420px] lg:h-[460px] rounded-none p-1.5 sm:p-2.5 bg-zinc-900 border border-black/20 transform-gpu will-change-transform"
           >
             {/* INNER PORTRAIT IMAGE HOLDER */}
             <div className="relative w-full h-full rounded-none overflow-hidden bg-zinc-950 border border-white/10">
@@ -188,7 +188,7 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
               className="relative inline-flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
             >
               {activeTab === "saas" && (
-                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
+                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs" />
               )}
               <span className={activeTab === "saas" ? "text-black font-extrabold" : "text-zinc-400"}>
                 SaaS & Full Stack
@@ -202,7 +202,7 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
               className="relative inline-flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
             >
               {activeTab === "visual" && (
-                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
+                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs" />
               )}
               <span className={activeTab === "visual" ? "text-black font-extrabold" : "text-zinc-400"}>
                 Visual Content
@@ -216,7 +216,7 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
               className="relative inline-flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
             >
               {activeTab === "motion" && (
-                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
+                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs" />
               )}
               <span className={activeTab === "motion" ? "text-black font-extrabold" : "text-zinc-400"}>
                 Motion & 3D
@@ -251,7 +251,7 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           <div className="pt-2 sm:pt-4">
             <button
               onClick={onOpenCalendly}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#0A0A0A] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#FF5500] transition-all duration-300 shadow-xl group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#0A0A0A] text-white font-mono text-xs uppercase tracking-widest hover:bg-[#FF5500] transition-all duration-300 group"
             >
               <span>REQUEST TECHNICAL DOSSIER</span>
               <ArrowRight className="w-4 h-4 text-[#FF5500] group-hover:text-white group-hover:translate-x-1 transition-all" />
@@ -269,15 +269,15 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           <div className="lg:col-span-5 relative h-[220px] sm:h-[380px] flex flex-col justify-center items-center gap-3 sm:gap-6">
             <div
               ref={block1Ref}
-              className="w-48 sm:w-72 md:w-80 h-14 sm:h-20 md:h-24 bg-[#FF5500] rounded-none shadow-[0_20px_50px_rgba(255,85,0,0.4)] -rotate-18 transform-gpu"
+              className="w-48 sm:w-72 md:w-80 h-14 sm:h-20 md:h-24 bg-[#FF5500] rounded-none -rotate-18 transform-gpu"
             />
             <div
               ref={block2Ref}
-              className="w-56 sm:w-80 md:w-96 h-14 sm:h-20 md:h-24 bg-[#EFEFEA] rounded-none shadow-2xl -rotate-18 transform-gpu"
+              className="w-56 sm:w-80 md:w-96 h-14 sm:h-20 md:h-24 bg-[#EFEFEA] rounded-none -rotate-18 transform-gpu"
             />
             <div
               ref={block3Ref}
-              className="w-48 sm:w-72 md:w-80 h-14 sm:h-20 md:h-24 bg-[#581C87] rounded-none shadow-[0_20px_50px_rgba(88,28,135,0.6)] -rotate-18 transform-gpu"
+              className="w-48 sm:w-72 md:w-80 h-14 sm:h-20 md:h-24 bg-[#581C87] rounded-none -rotate-18 transform-gpu"
             />
           </div>
 

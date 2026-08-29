@@ -255,7 +255,7 @@ export default function HeroBrandReveal({ onOpenCalendly }: HeroProps) {
 
         {/* MOBILE SECOND SPACE: GIANT VIDEO SHOWCASE */}
         <div className="w-full mt-10">
-          <div className="relative w-full h-[46vh] bg-black overflow-hidden shadow-2xl border border-black/10 rounded-xs">
+          <div className="relative w-full h-[46vh] bg-black overflow-hidden border border-black/10 rounded-xs">
             <video
               src="/so_i_want_a_mini_animation_on.mp4"
               autoPlay
@@ -272,7 +272,7 @@ export default function HeroBrandReveal({ onOpenCalendly }: HeroProps) {
       <div ref={badgeRef} className="fixed left-6 bottom-6 z-40 flex items-center transform-gpu">
         <div
           onClick={onOpenCalendly}
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black border border-white/20 shadow-2xl flex items-center justify-center cursor-pointer hover:scale-110 hover:border-[#FF5500] transition-all duration-300 group"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black border border-white/20 flex items-center justify-center cursor-pointer hover:scale-110 hover:border-[#FF5500] transition-all duration-300 group"
           title="SGR Kinetic Badge"
         >
           <Logo className="w-7 h-7 sm:w-8 sm:h-8 text-[#FF5500] group-hover:rotate-180 transition-transform duration-700 ease-out" />
