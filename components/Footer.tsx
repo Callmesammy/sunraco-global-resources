@@ -85,7 +85,7 @@ export default function Footer({ onOpenCalendly }: FooterProps) {
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
           <a href="/privacy" className="hover:text-white transition-colors font-bold text-zinc-300">Privacy Policy</a>
           <span className="text-zinc-600">•</span>
-          <span className="text-zinc-500">Cookies Policy</span>
+          <a href="/cookies" className="hover:text-white transition-colors font-bold text-zinc-300">Cookies Policy</a>
         </div>
       </div>
     </footer>

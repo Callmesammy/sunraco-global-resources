@@ -222,7 +222,7 @@ export default function HeroBrandReveal({ onOpenCalendly }: HeroProps) {
           <div className="w-full mt-7 pointer-events-none">
             <div
               ref={bottomLine1Ref}
-              className="w-full h-5 bg-[#FF5500] rounded-full shadow-[0_0_20px_rgba(255,85,0,0.85)] transform-gpu will-change-transform"
+              className="w-full h-5 bg-[#FF5500] rounded-none transform-gpu will-change-transform"
             />
           </div>
         </div>
@@ -248,7 +248,7 @@ export default function HeroBrandReveal({ onOpenCalendly }: HeroProps) {
           <div className="w-full mt-3 px-1">
             <div
               ref={mobileBottomLineRef}
-              className="w-full h-3.5 bg-[#FF5500] rounded-full shadow-[0_0_20px_rgba(255,85,0,0.85)] transform-gpu will-change-transform"
+              className="w-full h-3.5 bg-[#FF5500] rounded-none transform-gpu will-change-transform"
             />
           </div>
         </div>
