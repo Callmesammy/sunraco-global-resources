@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { Sparkles, Activity, ShieldCheck, Cpu, ArrowUpRight } from "lucide-react";
 import Logo from "@/components/Logo";
 
 export default function ZoomScrollReel() {
@@ -389,34 +388,26 @@ export default function ZoomScrollReel() {
           {/* Background Soft Accent Panel */}
           <div
             ref={softAccentPanelRef}
-            className="absolute w-56 sm:w-80 md:w-[420px] h-[30vh] sm:h-[34vh] bg-[#F3E8FF] rounded-none opacity-0 shadow-lg transform-gpu"
+            className="absolute w-56 sm:w-80 md:w-[420px] h-[30vh] sm:h-[34vh] bg-[#F3E8FF] rounded-none opacity-0 transform-gpu"
           />
 
           {/* Background Kinetic Anchor Bar */}
           <div
             ref={kineticBarRef}
-            className="w-48 sm:w-80 md:w-[450px] h-[28vh] sm:h-[36vh] bg-[#581C87] rounded-none shadow-[0_35px_90px_rgba(88,28,135,0.75)] z-20 transform-gpu opacity-0"
+            className="w-48 sm:w-80 md:w-[450px] h-[28vh] sm:h-[36vh] bg-[#581C87] rounded-none z-20 transform-gpu opacity-0"
           />
 
-          {/* CARD 1: 01 // SAAS */}
+          {/* CARD 1: SAAS ENGINE */}
           <div
             ref={card1Ref}
             onClick={() => setSelectedCard(1)}
             onMouseEnter={() => setSelectedCard(1)}
-            className={`absolute left-[2%] sm:left-[5%] w-36 sm:w-64 h-[32vh] sm:h-[44vh] bg-[#581C87] text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-2xl flex flex-col justify-between transform-gpu transition-all duration-500 cursor-pointer border border-purple-400/20 ${
+            className={`absolute left-[2%] sm:left-[5%] w-36 sm:w-64 h-[32vh] sm:h-[44vh] bg-[#581C87] text-white p-4 sm:p-6 rounded-none flex flex-col justify-end transform-gpu transition-all duration-500 cursor-pointer border border-purple-400/20 ${
               selectedCard === 1
-                ? "z-40 scale-110 shadow-[0_25px_60px_rgba(88,28,135,0.8)] border-[#FF5500]"
+                ? "z-40 scale-110 border-[#FF5500]"
                 : "z-10 hover:scale-105 opacity-90"
             }`}
           >
-            <div className="flex items-center justify-between">
-              <div className="font-mono text-[9px] sm:text-xs text-purple-200 uppercase tracking-widest flex items-center gap-1.5">
-                <Cpu className="w-3.5 h-3.5 text-[#FF5500]" />
-                <span>01 // SAAS ENGINE</span>
-              </div>
-              <ArrowUpRight className="w-4 h-4 text-purple-300 opacity-60 group-hover:opacity-100" />
-            </div>
-
             <div className="space-y-1">
               <div className="font-sans font-extrabold text-2xl sm:text-4xl tracking-tighter">
                 SaaS<span className="text-[#FF5500]">.</span>
@@ -432,41 +423,29 @@ export default function ZoomScrollReel() {
             ref={card2Ref}
             onClick={() => setSelectedCard(2)}
             onMouseEnter={() => setSelectedCard(2)}
-            className={`absolute left-[20%] sm:left-[26%] w-32 sm:w-56 h-[24vh] sm:h-[32vh] bg-[#FF5500] text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl flex flex-col justify-between transform-gpu transition-all duration-500 cursor-pointer ${
+            className={`absolute left-[20%] sm:left-[26%] w-32 sm:w-56 h-[24vh] sm:h-[32vh] bg-[#FF5500] text-white p-4 sm:p-6 rounded-none flex flex-col justify-center items-center transform-gpu transition-all duration-500 cursor-pointer ${
               selectedCard === 2
-                ? "z-40 scale-115 shadow-[0_25px_60px_rgba(255,85,0,0.8)]"
+                ? "z-40 scale-115 border border-white"
                 : "z-20 hover:scale-105 opacity-95"
             }`}
           >
-            <div className="font-mono text-[9px] sm:text-xs text-orange-100 uppercase tracking-widest flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-white" />
-              <span>BRAND PACK</span>
-            </div>
             <div className="flex items-center gap-2 font-sans font-black text-2xl sm:text-4xl">
               <Logo className="w-7 h-7 sm:w-10 sm:h-10 text-white shrink-0" />
               <span>sgr<span className="text-black">.</span></span>
             </div>
           </div>
 
-          {/* CARD 3: 02 // MOTION (MAIN HERO CARD) */}
+          {/* CARD 3: MOTION (MAIN HERO CARD) */}
           <div
             ref={card3Ref}
             onClick={() => setSelectedCard(3)}
             onMouseEnter={() => setSelectedCard(3)}
-            className={`absolute w-52 sm:w-80 md:w-96 h-[40vh] sm:h-[52vh] bg-[#1D4ED8] text-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col justify-between transform-gpu transition-all duration-500 cursor-pointer border border-blue-400/30 ${
+            className={`absolute w-52 sm:w-80 md:w-96 h-[40vh] sm:h-[52vh] bg-[#1D4ED8] text-white p-5 sm:p-8 rounded-none flex flex-col justify-end transform-gpu transition-all duration-500 cursor-pointer border border-blue-400/30 ${
               selectedCard === 3
-                ? "z-50 scale-110 shadow-[0_30px_70px_rgba(29,78,216,0.8)] ring-2 ring-[#FF5500]"
+                ? "z-50 scale-110 ring-2 ring-[#FF5500]"
                 : "z-30 hover:scale-105 opacity-95"
             }`}
           >
-            <div className="flex items-center justify-between">
-              <div className="font-mono text-[9px] sm:text-xs text-blue-200 uppercase tracking-widest flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-[#FF5500]" />
-                <span>02 // MOTION WEB</span>
-              </div>
-              <div className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse" />
-            </div>
-
             <div className="space-y-2">
               <div className="font-sans font-black text-3xl sm:text-6xl tracking-tighter">
                 motion<span className="text-[#FF5500]">.</span>
@@ -482,37 +461,28 @@ export default function ZoomScrollReel() {
             ref={card4Ref}
             onClick={() => setSelectedCard(4)}
             onMouseEnter={() => setSelectedCard(4)}
-            className={`absolute right-[18%] sm:right-[24%] w-32 sm:w-52 h-[22vh] sm:h-[30vh] bg-[#064E3B] text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl flex flex-col justify-between transform-gpu transition-all duration-500 cursor-pointer ${
+            className={`absolute right-[18%] sm:right-[24%] w-32 sm:w-52 h-[22vh] sm:h-[30vh] bg-[#064E3B] text-white p-4 sm:p-6 rounded-none flex flex-col justify-center items-center text-center transform-gpu transition-all duration-500 cursor-pointer ${
               selectedCard === 4
-                ? "z-40 scale-115 shadow-[0_25px_60px_rgba(6,78,59,0.8)] border border-emerald-400"
+                ? "z-40 scale-115 border border-emerald-400"
                 : "z-20 hover:scale-105 opacity-95"
             }`}
           >
-            <div className="font-mono text-[9px] text-emerald-300 uppercase tracking-widest">3D CANVAS</div>
             <div className="font-mono font-extrabold text-xs sm:text-base text-emerald-100">
               THREE.JS & WEBGL
             </div>
           </div>
 
-          {/* CARD 5: 03 // ROLLOUT */}
+          {/* CARD 5: ROLLOUT */}
           <div
             ref={card5Ref}
             onClick={() => setSelectedCard(5)}
             onMouseEnter={() => setSelectedCard(5)}
-            className={`absolute right-[2%] sm:right-[5%] w-36 sm:w-64 h-[32vh] sm:h-[44vh] bg-[#2DD4BF] text-black p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-2xl flex flex-col justify-between transform-gpu transition-all duration-500 cursor-pointer border border-teal-600/20 ${
+            className={`absolute right-[2%] sm:right-[5%] w-36 sm:w-64 h-[32vh] sm:h-[44vh] bg-[#2DD4BF] text-black p-4 sm:p-6 rounded-none flex flex-col justify-end transform-gpu transition-all duration-500 cursor-pointer border border-teal-600/20 ${
               selectedCard === 5
-                ? "z-40 scale-110 shadow-[0_25px_60px_rgba(45,212,191,0.8)] border-black"
+                ? "z-40 scale-110 border-black"
                 : "z-10 hover:scale-105 opacity-90"
             }`}
           >
-            <div className="flex items-center justify-between">
-              <div className="font-mono text-[9px] sm:text-xs text-teal-950 uppercase tracking-widest flex items-center gap-1.5">
-                <Activity className="w-3.5 h-3.5 text-[#FF5500]" />
-                <span>03 // ROLLOUT</span>
-              </div>
-              <ArrowUpRight className="w-4 h-4 text-teal-900 opacity-60" />
-            </div>
-
             <div className="space-y-1">
               <div className="font-sans font-extrabold text-2xl sm:text-4xl tracking-tighter">
                 rollout<span className="text-[#FF5500]">.</span>

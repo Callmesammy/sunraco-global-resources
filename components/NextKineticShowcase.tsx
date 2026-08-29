@@ -78,7 +78,7 @@ export default function NextKineticShowcase({}: NextKineticShowcaseProps) {
       {/* SHARP THIN KINETIC ORANGE BAR */}
       <div
         ref={thinBoxRef}
-        className="w-56 sm:w-80 md:w-[480px] h-16 sm:h-24 md:h-28 bg-[#FF5500] rounded-none shadow-[0_30px_90px_rgba(255,85,0,0.5)] z-20 transform-gpu will-change-transform"
+        className="w-56 sm:w-80 md:w-[480px] h-16 sm:h-24 md:h-28 bg-[#FF5500] rounded-none z-20 transform-gpu will-change-transform"
       />
 
       {/* SHARP ZOOMED MP4 VIDEO CONTAINER */}
