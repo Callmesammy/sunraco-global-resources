@@ -13,13 +13,10 @@ export default function Footer({ onOpenCalendly }: FooterProps) {
     <footer className="w-full bg-[#EFEFEA] text-[#0A0A0A] p-0 m-0 overflow-hidden select-none border-t border-black/10">
       {/* TOP MAIN FOOTER STAGE */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 pt-12 sm:pt-24 pb-12 sm:pb-20 grid grid-cols-1 lg:grid-cols-12 items-center lg:items-end gap-10 sm:gap-12">
-        {/* LEFT COLUMN: UNIFIED "sgr." BRAND DISPLAY MARK */}
+        {/* LEFT COLUMN: BRAND DISPLAY ICON MARK */}
         <div className="lg:col-span-6 flex flex-col items-center sm:items-start justify-center w-full">
-          <div className="flex items-center justify-center sm:justify-start gap-4 sm:gap-6 w-full">
-            <Logo className="w-14 h-14 sm:w-28 sm:h-28 lg:w-36 lg:h-36 text-[#FF5500] shrink-0 hover:rotate-180 transition-transform duration-700 ease-out" />
-            <div className="font-sans font-black text-6xl sm:text-9xl lg:text-[14rem] tracking-tighter leading-none text-[#0A0A0A]">
-              sgr<span className="text-[#FF5500]">.</span>
-            </div>
+          <div className="flex items-center justify-center sm:justify-start w-full">
+            <Logo className="w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 text-[#FF5500] shrink-0 hover:rotate-180 transition-transform duration-700 ease-out" />
           </div>
         </div>
 
@@ -49,9 +46,14 @@ export default function Footer({ onOpenCalendly }: FooterProps) {
                 LinkedIn
               </a>
               <span className="text-zinc-400 font-normal">•</span>
-              <span className="text-zinc-600 font-bold py-1 px-2.5 bg-zinc-200/60 rounded-sm">X (In Progress)</span>
-              <span className="text-zinc-400 font-normal">•</span>
-              <span className="text-zinc-600 font-bold py-1 px-2.5 bg-zinc-200/60 rounded-sm">Instagram</span>
+              <a
+                href="https://instagram.com/sunraco_global_resources"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#FF5500] hover:text-[#0A0A0A] transition-colors py-1 px-2.5 bg-orange-500/10 rounded-sm"
+              >
+                Instagram
+              </a>
             </div>
 
             {/* Email & Phone Contact Info */}
@@ -81,9 +83,9 @@ export default function Footer({ onOpenCalendly }: FooterProps) {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          <a href="#" className="hover:text-white transition-colors">Cookies</a>
+          <a href="/privacy" className="hover:text-white transition-colors font-bold text-zinc-300">Privacy Policy</a>
+          <span className="text-zinc-600">•</span>
+          <span className="text-zinc-500">Cookies Policy</span>
         </div>
       </div>
     </footer>

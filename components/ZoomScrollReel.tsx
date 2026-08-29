@@ -50,12 +50,12 @@ export default function ZoomScrollReel() {
       mm.add({ isDesktop: "(min-width: 640px)", isMobile: "(max-width: 639px)" }, (ctx) => {
         const { isMobile } = ctx.conditions as { isMobile: boolean };
 
-        // Main Pinned Timeline - Generous pause window for interactive submenu reading
+        // Main Pinned Timeline - Generous pause windows for text reading and interactive submenus
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: isMobile ? "+=300%" : "+=420%",
+            end: isMobile ? "+=380%" : "+=520%",
             scrub: 0.5,
             pin: true,
             pinSpacing: true,
@@ -104,60 +104,65 @@ export default function ZoomScrollReel() {
           .fromTo(line6Ref.current, { opacity: 0.3, y: 20, x: 30 }, { opacity: 1, y: 0, x: 0, ease: "power2.out" }, 0.10)
           .fromTo(line7Ref.current, { opacity: 0.3, y: 20, x: -30 }, { opacity: 1, y: 0, x: 0, ease: "power2.out" }, 0.12);
 
-        // STEP 2: DARK KINETIC PANEL ZOOMS IN & LOCKS FOR INTERACTION (0.15 -> 0.25)
-        tl.set(darkPanelRef.current, { display: "flex" }, 0.15).fromTo(
+        // =========================================================================
+        // STEP 1 READING HOLD DELAY (0.15 -> 0.42):
+        // All 7 text lines stay 100% visible & static so the user can read everything!
+        // =========================================================================
+
+        // STEP 2: DARK KINETIC PANEL ZOOMS IN & LOCKS FOR INTERACTION (0.42 -> 0.52)
+        tl.set(darkPanelRef.current, { display: "flex" }, 0.42).fromTo(
           darkPanelRef.current,
           { scale: 0.35, opacity: 0, borderRadius: "2rem" },
           { scale: 1.0, opacity: 1, borderRadius: "0rem", ease: "power2.out" },
-          0.16
+          0.43
         );
 
-        tl.to(oldContentRef.current, { opacity: 0 }, 0.18);
-        tl.to(darkPanelRef.current, { opacity: 1 }, 0.25);
+        tl.to(oldContentRef.current, { opacity: 0 }, 0.45);
+        tl.to(darkPanelRef.current, { opacity: 1 }, 0.52);
 
         // =========================================================================
-        // EXTENDED INTERACTIVE HOLDING DELAY (0.25 -> 0.60):
-        // Dark Panel stays 100% visible & static so user has ample time to click submenus!
+        // STEP 2 INTERACTIVE HOLDING DELAY (0.52 -> 0.78):
+        // Dark Panel stays 100% visible & static so user can click submenus!
         // =========================================================================
 
-        // STEP 3: SOLID DEEP PURPLE COVER TAKEOVER (0.60 -> 0.74)
-        tl.set(solidPurpleCoverRef.current, { display: "block" }, 0.60).fromTo(
+        // STEP 3: SOLID DEEP PURPLE COVER TAKEOVER (0.78 -> 0.88)
+        tl.set(solidPurpleCoverRef.current, { display: "block" }, 0.78).fromTo(
           solidPurpleCoverRef.current,
           { y: "100%", opacity: 0 },
           { y: "0%", opacity: 1, ease: "power2.inOut" },
-          0.61
+          0.79
         );
 
-        // STEP 4: DISSOLVE TO WHITE CANVAS & CARDS SLIDE IN (0.74 -> 0.88)
-        tl.set(whiteScreenStageRef.current, { display: "flex" }, 0.73)
-          .to(solidPurpleCoverRef.current, { opacity: 0, ease: "power2.inOut" }, 0.74)
+        // STEP 4: DISSOLVE TO WHITE CANVAS & CARDS SLIDE IN (0.88 -> 0.94)
+        tl.set(whiteScreenStageRef.current, { display: "flex" }, 0.87)
+          .to(solidPurpleCoverRef.current, { opacity: 0, ease: "power2.inOut" }, 0.88)
           .fromTo(
             whiteScreenStageRef.current,
             { opacity: 0 },
             { opacity: 1, ease: "power2.inOut" },
-            0.74
+            0.88
           )
           .fromTo(
             kineticBarRef.current,
             { scale: 0.4, rotation: -18, x: 0, opacity: 0 },
             { scale: 1.0, rotation: -18, x: 0, opacity: 1, ease: "power2.out" },
-            0.75
+            0.89
           )
           .fromTo(
             softAccentPanelRef.current,
             { x: -60, y: 20, rotation: -18, opacity: 0 },
             { x: -40, y: 10, rotation: -18, opacity: 1, ease: "power2.out" },
-            0.76
+            0.90
           );
 
         // Cards fan out cleanly without jitter
-        tl.fromTo(card1Ref.current, { x: -220, opacity: 0, rotation: -15 }, { x: 0, opacity: 1, rotation: -8, ease: "power2.out" }, 0.78)
-          .fromTo(card2Ref.current, { x: -120, opacity: 0, rotation: -10 }, { x: 0, opacity: 1, rotation: -4, ease: "power2.out" }, 0.80)
-          .fromTo(card3Ref.current, { scale: 0.6, opacity: 0 }, { scale: 1.0, opacity: 1, ease: "power2.out" }, 0.82)
-          .fromTo(card4Ref.current, { x: 120, opacity: 0, rotation: 10 }, { x: 0, opacity: 1, rotation: 4, ease: "power2.out" }, 0.84)
-          .fromTo(card5Ref.current, { x: 220, opacity: 0, rotation: 15 }, { x: 0, opacity: 1, rotation: 8, ease: "power2.out" }, 0.86);
+        tl.fromTo(card1Ref.current, { x: -220, opacity: 0, rotation: -15 }, { x: 0, opacity: 1, rotation: -8, ease: "power2.out" }, 0.91)
+          .fromTo(card2Ref.current, { x: -120, opacity: 0, rotation: -10 }, { x: 0, opacity: 1, rotation: -4, ease: "power2.out" }, 0.92)
+          .fromTo(card3Ref.current, { scale: 0.6, opacity: 0 }, { scale: 1.0, opacity: 1, ease: "power2.out" }, 0.93)
+          .fromTo(card4Ref.current, { x: 120, opacity: 0, rotation: 10 }, { x: 0, opacity: 1, rotation: 4, ease: "power2.out" }, 0.94)
+          .fromTo(card5Ref.current, { x: 220, opacity: 0, rotation: 15 }, { x: 0, opacity: 1, rotation: 8, ease: "power2.out" }, 0.95);
 
-        // STEP 5: ROTATE CARDS TO UPRIGHT & SPOTLIGHT FOCUS (0.88 -> 1.00)
+        // STEP 5: ROTATE CARDS TO UPRIGHT & SPOTLIGHT FOCUS (0.95 -> 1.00)
         tl.to(
           [
             kineticBarRef.current,
@@ -169,10 +174,10 @@ export default function ZoomScrollReel() {
             card5Ref.current,
           ],
           { rotation: 0, y: 0, ease: "power2.inOut" },
-          0.89
+          0.96
         );
 
-        tl.to(card3Ref.current, { scale: isMobile ? 1.05 : 1.15, ease: "power2.inOut" }, 0.95);
+        tl.to(card3Ref.current, { scale: isMobile ? 1.05 : 1.15, ease: "power2.inOut" }, 0.98);
         tl.to(whiteScreenStageRef.current, { opacity: 1 }, 1.0);
 
         return () => {
@@ -352,9 +357,8 @@ export default function ZoomScrollReel() {
               <div style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.4)" }}>BUILD</div>
             </div>
 
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3 sm:gap-6 font-sans font-black text-6xl sm:text-7xl xl:text-8xl tracking-tighter text-white uppercase leading-none">
-              <Logo className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 text-[#FF5500] shrink-0 hover:rotate-180 transition-transform duration-700 ease-out" />
-              <span>sgr<span className="text-[#FF5500]">.</span></span>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
+              <Logo className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 text-[#FF5500] shrink-0 hover:rotate-180 transition-transform duration-700 ease-out" />
             </div>
           </div>
         </div>

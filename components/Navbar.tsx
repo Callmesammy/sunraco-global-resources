@@ -92,15 +92,13 @@ export default function Navbar({ onOpenCalendly, isDark = false }: NavbarProps) 
         <div className="flex items-center">
           <a
             href="/"
-            className="flex items-center gap-2.5 group transition-transform duration-300 hover:scale-105"
+            className="flex items-center group transition-transform duration-300 hover:scale-105"
+            aria-label="sgr Home"
           >
             <Logo
-              className="w-7 h-7 sm:w-8 sm:h-8 text-[#FF5500] group-hover:rotate-90 transition-transform duration-500 ease-out"
+              className="w-8 h-8 sm:w-10 sm:h-10 text-[#FF5500] group-hover:rotate-90 transition-transform duration-500 ease-out"
               animated={false}
             />
-            <span className={`font-sans font-black text-2xl sm:text-3xl tracking-tighter ${textClass}`}>
-              sgr<span className="text-[#FF5500]">.</span>
-            </span>
           </a>
         </div>
 

@@ -152,18 +152,18 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           {/* SLEEK NEUTRAL BACKDROP SHADOW */}
           <div className="absolute -inset-4 bg-black/10 blur-2xl rounded-3xl pointer-events-none" />
 
-          {/* PORTRAIT CARD FRAME - COMPACT ON MOBILE TO SHOW FULL PORTRAIT */}
+          {/* PORTRAIT CARD FRAME - SHARP 90° CORNERS & VERTICAL PORTRAIT ASPECT RATIO ON MOBILE */}
           <div
             ref={portraitCardRef}
-            className="relative w-full h-[260px] sm:h-[400px] lg:h-[460px] rounded-2xl sm:rounded-[36px] p-2 sm:p-2.5 bg-zinc-900 border border-black/20 shadow-2xl shadow-black/30 transform-gpu will-change-transform"
+            className="relative w-full max-w-[260px] sm:max-w-none mx-auto h-[320px] sm:h-[420px] lg:h-[460px] rounded-none p-1.5 sm:p-2.5 bg-zinc-900 border border-black/20 shadow-2xl transform-gpu will-change-transform"
           >
             {/* INNER PORTRAIT IMAGE HOLDER */}
-            <div className="relative w-full h-full rounded-xl sm:rounded-[28px] overflow-hidden bg-zinc-950 border border-white/10">
+            <div className="relative w-full h-full rounded-none overflow-hidden bg-zinc-950 border border-white/10">
               <div ref={portraitZoomRef} className="relative w-full h-full transform-gpu will-change-transform z-10">
                 <img
                   src="/user_portrait.jpg"
                   alt="sgr Founder & Full Stack Lead Engineer"
-                  className="w-full h-full object-cover object-center grayscale contrast-125 brightness-105 transition-all duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover object-top sm:object-center grayscale contrast-125 brightness-105 transition-all duration-700 ease-out group-hover:scale-105"
                 />
               </div>
 

@@ -324,7 +324,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
               </button>
 
               <p className="font-mono text-[10px] sm:text-xs text-zinc-400 max-w-xl leading-relaxed">
-                *By pressing Proceed, I consent to sgr storing and using this information to contact me in relation to starting a new project account (see our <span className="underline font-bold text-zinc-300">privacy statement</span> for more information)
+                *By pressing Proceed, I consent to sgr storing and using this information to contact me in relation to starting a new project account (see our <a href="/privacy" target="_blank" className="underline font-bold text-zinc-300 hover:text-white">privacy statement</a> for more information)
               </p>
             </div>
           </form>
