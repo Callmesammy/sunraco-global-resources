@@ -46,7 +46,6 @@ export default function CalendlyModal({ isOpen, onClose }: CalendlyModalProps) {
 
       {/* Modal Container */}
       <div
-        ref={modalRef}
         data-lenis-prevent="true"
         data-lenis-prevent-touch="true"
         data-lenis-prevent-wheel="true"

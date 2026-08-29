@@ -442,7 +442,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
         {/* STEP 4: SUCCESS CONFIRMATION */}
         {step === 4 && (
           <div className="text-center py-12 space-y-6">
-            <div className="w-20 h-20 rounded-none bg-[#A855F7]/10 border border-[#A855F7] flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(168,85,247,0.5)]">
+            <div className="w-20 h-20 rounded-none bg-[#A855F7]/10 border border-[#A855F7] flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-10 h-10 text-[#A855F7]" />
             </div>
 
