@@ -174,6 +174,13 @@ export default function ZoomScrollReel() {
 
         tl.to(card3Ref.current, { scale: isMobile ? 1.05 : 1.15, ease: "power2.inOut" }, 0.95);
         tl.to(whiteScreenStageRef.current, { opacity: 1 }, 1.0);
+
+        return () => {
+          if (darkPanelRef.current) gsap.set(darkPanelRef.current, { clearProps: "all" });
+          if (oldContentRef.current) gsap.set(oldContentRef.current, { clearProps: "all" });
+          if (solidPurpleCoverRef.current) gsap.set(solidPurpleCoverRef.current, { clearProps: "all" });
+          if (whiteScreenStageRef.current) gsap.set(whiteScreenStageRef.current, { clearProps: "all" });
+        };
       });
     },
     { scope: sectionRef }
@@ -281,10 +288,10 @@ export default function ZoomScrollReel() {
       {/* STAGE A: CLEAN KINETIC DARK PANEL */}
       <div
         ref={darkPanelRef}
-        className="fixed inset-0 w-full h-full min-h-screen z-40 bg-[#0A0A0A] text-white px-6 sm:px-12 md:px-20 pt-20 sm:pt-28 pb-10 flex flex-col justify-between overflow-hidden shadow-2xl opacity-0 scale-50 rounded-none pointer-events-auto hidden transform-gpu will-change-transform"
+        className="fixed inset-0 w-full h-full min-h-screen z-40 bg-[#0A0A0A] text-white px-6 sm:px-12 md:px-20 pt-16 sm:pt-20 pb-8 sm:pb-12 flex flex-col justify-between overflow-hidden shadow-2xl opacity-0 scale-50 rounded-none pointer-events-auto hidden transform-gpu will-change-transform"
       >
         {/* TOP SUBMENU BAR - STICKY, HIGH-CONTRAST, 100% CLICKABLE */}
-        <div className="w-full max-w-7xl mx-auto flex items-center gap-6 sm:gap-10 font-sans font-bold text-lg sm:text-2xl tracking-tight z-50 pt-6 pb-4">
+        <div className="w-full max-w-7xl mx-auto flex items-center gap-6 sm:gap-10 font-sans font-bold text-lg sm:text-2xl tracking-tight z-50 pt-4 pb-4">
           <button
             onClick={() => setActiveTab("about")}
             className="relative inline-flex items-center gap-2.5 cursor-pointer whitespace-nowrap hover:scale-105 transition-all pointer-events-auto group"
@@ -333,20 +340,20 @@ export default function ZoomScrollReel() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 my-auto z-10 max-w-7xl w-full mx-auto">
-          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-            <h2 className="font-sans font-medium text-lg sm:text-3xl lg:text-5xl tracking-tight leading-[1.3] text-zinc-100 max-w-3xl min-h-[140px] sm:min-h-[180px] transition-all duration-300">
+          <div className="lg:col-span-7 xl:col-span-7 space-y-4 sm:space-y-6">
+            <h2 className="font-sans font-medium text-base sm:text-2xl lg:text-3xl xl:text-4xl tracking-tight leading-[1.35] text-zinc-100 max-w-2xl transition-all duration-300">
               {tabContents[activeTab as keyof typeof tabContents]}
             </h2>
           </div>
 
-          <div className="hidden sm:flex lg:col-span-5 relative flex-col items-end justify-center pointer-events-none select-none">
-            <div className="font-sans font-black text-6xl sm:text-9xl tracking-tighter uppercase opacity-10 text-transparent stroke-text leading-none space-y-2">
+          <div className="hidden xl:flex lg:col-span-5 relative flex-col items-end justify-center pointer-events-none select-none">
+            <div className="font-sans font-black text-6xl sm:text-8xl tracking-tighter uppercase opacity-10 text-transparent stroke-text leading-none space-y-2">
               <div style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.4)" }}>ENGINEER</div>
               <div style={{ WebkitTextStroke: "2px rgba(255, 255, 255, 0.4)" }}>BUILD</div>
             </div>
 
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3 sm:gap-6 font-sans font-black text-6xl sm:text-9xl lg:text-[12rem] tracking-tighter text-white uppercase leading-none">
-              <Logo className="w-16 h-16 sm:w-28 sm:h-28 lg:w-36 lg:h-36 text-[#FF5500] shrink-0 hover:rotate-180 transition-transform duration-700 ease-out" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-3 sm:gap-6 font-sans font-black text-6xl sm:text-7xl xl:text-8xl tracking-tighter text-white uppercase leading-none">
+              <Logo className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 text-[#FF5500] shrink-0 hover:rotate-180 transition-transform duration-700 ease-out" />
               <span>sgr<span className="text-[#FF5500]">.</span></span>
             </div>
           </div>

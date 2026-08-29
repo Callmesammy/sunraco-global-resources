@@ -152,10 +152,10 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           {/* SLEEK NEUTRAL BACKDROP SHADOW */}
           <div className="absolute -inset-4 bg-black/10 blur-2xl rounded-3xl pointer-events-none" />
 
-          {/* PORTRAIT CARD FRAME - MAXIMUM VISIBILITY & FULL VIBRANT COLOR ON MOBILE */}
+          {/* PORTRAIT CARD FRAME - COMPACT ON MOBILE TO SHOW FULL PORTRAIT */}
           <div
             ref={portraitCardRef}
-            className="relative w-full h-[500px] sm:h-[520px] lg:h-[560px] rounded-2xl sm:rounded-[36px] p-2 sm:p-2.5 bg-zinc-900 border border-black/20 shadow-2xl shadow-black/30 transform-gpu will-change-transform"
+            className="relative w-full h-[260px] sm:h-[400px] lg:h-[460px] rounded-2xl sm:rounded-[36px] p-2 sm:p-2.5 bg-zinc-900 border border-black/20 shadow-2xl shadow-black/30 transform-gpu will-change-transform"
           >
             {/* INNER PORTRAIT IMAGE HOLDER */}
             <div className="relative w-full h-full rounded-xl sm:rounded-[28px] overflow-hidden bg-zinc-950 border border-white/10">
@@ -163,13 +163,13 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
                 <img
                   src="/user_portrait.jpg"
                   alt="sgr Founder & Full Stack Lead Engineer"
-                  className="w-full h-full object-cover object-top contrast-110 brightness-110 transition-all duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover object-center grayscale contrast-125 brightness-105 transition-all duration-700 ease-out group-hover:scale-105"
                 />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none z-20" />
 
-              <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 text-white font-mono text-[9px] sm:text-xs uppercase tracking-widest flex items-center justify-between z-30">
+              <div className="absolute bottom-2.5 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 text-white font-mono text-[9px] sm:text-xs uppercase tracking-widest flex items-center justify-between z-30">
                 <div>FULL STACK LEAD ENGINEER</div>
                 <div className="text-[#FF5500] font-bold flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse" />

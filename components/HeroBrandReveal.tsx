@@ -109,6 +109,12 @@ export default function HeroBrandReveal({ onOpenCalendly }: HeroProps) {
             ease: "none",
           });
         }
+
+        return () => {
+          if (titleRef.current) gsap.set(titleRef.current, { clearProps: "all" });
+          if (lightBeamGroupRef.current) gsap.set(lightBeamGroupRef.current, { clearProps: "all" });
+          if (bottomLine1Ref.current) gsap.set(bottomLine1Ref.current, { clearProps: "all" });
+        };
       });
 
       // MOBILE ONLY ANIMATIONS (max-width: 639px)
@@ -120,6 +126,10 @@ export default function HeroBrandReveal({ onOpenCalendly }: HeroProps) {
             { scaleX: 1, opacity: 1, duration: 1.2, ease: "power3.out", transformOrigin: "left center" }
           );
         }
+
+        return () => {
+          if (mobileBottomLineRef.current) gsap.set(mobileBottomLineRef.current, { clearProps: "all" });
+        };
       });
     },
     { scope: containerRef }

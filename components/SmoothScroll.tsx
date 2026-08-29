@@ -36,12 +36,23 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     // Expose lenis instance globally for modal scroll locking
     (window as any).lenis = lenis;
 
-    // Refresh ScrollTrigger to recalculate exact pin bounds
+    // Refresh ScrollTrigger when window width changes (responsive layout toggle)
+    let lastWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    const handleResize = () => {
+      if (typeof window !== "undefined" && window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        ScrollTrigger.refresh();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Refresh ScrollTrigger to recalculate exact pin bounds after paint
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 150);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       clearTimeout(timer);
       delete (window as any).lenis;
       lenis.destroy();
