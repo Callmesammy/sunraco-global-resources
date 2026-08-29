@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import EnquiryModal from "@/components/EnquiryModal";
 import CalendlyModal from "@/components/CalendlyModal";
 import SmoothScroll from "@/components/SmoothScroll";
+import CookieBanner from "@/components/CookieBanner";
 import { ArrowLeft, ArrowUpRight, ExternalLink, ShieldCheck, Compass, Anchor, Cpu, Zap } from "lucide-react";
 
 export default function ProjectsPage() {
@@ -218,6 +219,9 @@ export default function ProjectsPage() {
 
         {/* Global Footer */}
         <Footer onOpenCalendly={() => handleOpenEnquiry()} />
+
+        {/* Floating Cookie Consent Banner */}
+        <CookieBanner />
 
         {/* Interactive Multi-Step Enquiry Modal */}
         <EnquiryModal

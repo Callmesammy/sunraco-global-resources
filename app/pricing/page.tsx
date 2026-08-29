@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import CalendlyModal from "@/components/CalendlyModal";
 import EnquiryModal from "@/components/EnquiryModal";
 import SmoothScroll from "@/components/SmoothScroll";
+import CookieBanner from "@/components/CookieBanner";
 import { ArrowRight, Check } from "lucide-react";
 
 export default function PricingPage() {
@@ -274,6 +275,9 @@ export default function PricingPage() {
 
         {/* Global Footer */}
         <Footer onOpenCalendly={() => handleOpenCalendly()} />
+
+        {/* Floating Cookie Consent Banner */}
+        <CookieBanner />
 
         {/* Interactive Multi-Step Enquiry Modal */}
         <EnquiryModal isOpen={isEnquiryOpen} onClose={handleCloseCalendly} initialPackage={selectedPackage} />

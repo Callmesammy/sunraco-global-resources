@@ -11,6 +11,7 @@ import CalendlyModal from "@/components/CalendlyModal";
 import EnquiryModal from "@/components/EnquiryModal";
 import Footer from "@/components/Footer";
 import IntroPreloader from "@/components/IntroPreloader";
+import CookieBanner from "@/components/CookieBanner";
 
 export default function Home() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
@@ -56,7 +57,10 @@ export default function Home() {
         {/* Global Footer (Matching KobyKooba Reference Screenshot: Giant sgr. mark + Rotated Let's Chat CTA) */}
         <Footer onOpenCalendly={handleOpenCalendly} />
 
-        {/* Interactive Multi-Step Enquiry Modal (Matching KobyKooba Screenshot 1-to-1) */}
+        {/* Floating Cookie Consent Banner */}
+        <CookieBanner />
+
+        {/* Interactive Multi-Step Enquiry Modal */}
         <EnquiryModal isOpen={isEnquiryOpen} onClose={handleCloseCalendly} />
         <CalendlyModal isOpen={isCalendlyOpen} onClose={handleCloseCalendly} />
       </div>

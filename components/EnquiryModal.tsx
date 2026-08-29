@@ -219,57 +219,57 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
         {/* CLOSE "X" BUTTON */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-3 rounded-none bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-colors cursor-pointer border border-white/10 z-20"
+          className="absolute top-3 right-3 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-none bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-colors cursor-pointer border border-white/10 z-30"
           aria-label="Close Enquiry Modal"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         {/* STEP NAVIGATOR HEADER (With Animated Purple Active Badges) */}
-        <div className="w-full flex items-center justify-center gap-6 sm:gap-12 font-sans font-bold text-base sm:text-xl tracking-tight mb-6 sm:mb-8 border-b border-white/10 pb-4 sm:pb-5">
+        <div className="w-full flex items-center justify-start sm:justify-center gap-1.5 sm:gap-12 font-sans font-bold text-xs sm:text-xl tracking-tight mb-6 sm:mb-8 border-b border-white/10 pb-3 sm:pb-5 pr-12 sm:pr-0 overflow-x-auto no-scrollbar">
           {/* STEP 1: DETAILS */}
           <div
             onClick={() => setStep(1)}
-            className="relative cursor-pointer py-1 px-2 flex items-center gap-2 group"
+            className="relative cursor-pointer py-1 px-1.5 sm:px-2 flex items-center gap-1.5 group shrink-0"
           >
             {step === 1 && (
               <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none -rotate-3 z-0 animate-pulse" />
             )}
-            <span className={`relative z-10 transition-colors ${step === 1 ? "text-white font-black px-4 py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
+            <span className={`relative z-10 transition-colors ${step === 1 ? "text-white font-black px-2.5 sm:px-4 py-1 sm:py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
               Details
             </span>
           </div>
 
-          <span className="text-[#A855F7]/60 font-bold select-none">|</span>
+          <span className="text-[#A855F7]/60 font-bold select-none text-xs sm:text-base shrink-0">|</span>
 
           {/* STEP 2: PROJECT TYPE */}
           <div
             onClick={() => {
               if (formData.name && formData.email) setStep(2);
             }}
-            className="relative cursor-pointer py-1 px-2 flex items-center gap-2 group"
+            className="relative cursor-pointer py-1 px-1.5 sm:px-2 flex items-center gap-1.5 group shrink-0"
           >
             {step === 2 && (
               <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none -rotate-3 z-0 animate-pulse" />
             )}
-            <span className={`relative z-10 transition-colors ${step === 2 ? "text-white font-black px-4 py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
+            <span className={`relative z-10 transition-colors ${step === 2 ? "text-white font-black px-2.5 sm:px-4 py-1 sm:py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
               Project Type
             </span>
           </div>
 
-          <span className="text-[#A855F7]/60 font-bold select-none">|</span>
+          <span className="text-[#A855F7]/60 font-bold select-none text-xs sm:text-base shrink-0">|</span>
 
           {/* STEP 3: BUDGET */}
           <div
             onClick={() => {
               if (formData.name && formData.email) setStep(3);
             }}
-            className="relative cursor-pointer py-1 px-2 flex items-center gap-2 group"
+            className="relative cursor-pointer py-1 px-1.5 sm:px-2 flex items-center gap-1.5 group shrink-0"
           >
             {step === 3 && (
               <div className="absolute inset-0 bg-gradient-to-r from-[#C084FC] via-[#A855F7] to-[#7E22CE] text-white rounded-none -rotate-3 z-0 animate-pulse" />
             )}
-            <span className={`relative z-10 transition-colors ${step === 3 ? "text-white font-black px-4 py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
+            <span className={`relative z-10 transition-colors ${step === 3 ? "text-white font-black px-2.5 sm:px-4 py-1 sm:py-1.5" : "text-zinc-400 group-hover:text-white"}`}>
               Budget
             </span>
           </div>

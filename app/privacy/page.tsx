@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import CalendlyModal from "@/components/CalendlyModal";
 import EnquiryModal from "@/components/EnquiryModal";
 import SmoothScroll from "@/components/SmoothScroll";
+import CookieBanner from "@/components/CookieBanner";
 
 export default function PrivacyPage() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
@@ -78,6 +79,9 @@ export default function PrivacyPage() {
 
         {/* GLOBAL FOOTER */}
         <Footer onOpenCalendly={() => setIsCalendlyOpen(true)} />
+
+        {/* FLOATING COOKIE CONSENT BANNER */}
+        <CookieBanner />
 
         {/* MODALS */}
         <CalendlyModal

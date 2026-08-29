@@ -254,8 +254,8 @@ export default function HeroBrandReveal({ onOpenCalendly }: HeroProps) {
         </div>
 
         {/* MOBILE SECOND SPACE: GIANT VIDEO SHOWCASE */}
-        <div className="w-full mt-10">
-          <div className="relative w-full h-[46vh] bg-black overflow-hidden border border-black/10 rounded-xs">
+        <div className="w-full mt-6 sm:mt-10">
+          <div className="relative w-full h-[78vh] sm:h-[46vh] bg-black overflow-hidden border border-black/10 rounded-xs">
             <video
               src="/so_i_want_a_mini_animation_on.mp4"
               autoPlay

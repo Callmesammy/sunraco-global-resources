@@ -38,6 +38,20 @@ export default function ZoomScrollReel() {
 
   const [activeTab, setActiveTab] = useState("about");
   const [selectedCard, setSelectedCard] = useState<number>(3); // 1 to 5
+  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+
+  const handleTabClick = (tab: "about" | "approach" | "why") => {
+    setActiveTab(tab);
+    if (scrollTriggerRef.current) {
+      const st = scrollTriggerRef.current;
+      let targetProgress = 0.48;
+      if (tab === "approach") targetProgress = 0.60;
+      if (tab === "why") targetProgress = 0.72;
+
+      const targetScroll = st.start + targetProgress * (st.end - st.start);
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    }
+  };
 
   // Continuous Ambient Kinetic Floating Animation & Mouse Parallax
   useGSAP(
@@ -71,8 +85,20 @@ export default function ZoomScrollReel() {
             onLeaveBack: () => {
               gsap.to("header", { opacity: 1, pointerEvents: "auto", duration: 0.2 });
             },
+            onUpdate: (self) => {
+              const p = self.progress;
+              if (p >= 0.42 && p < 0.56) {
+                setActiveTab("about");
+              } else if (p >= 0.56 && p < 0.67) {
+                setActiveTab("approach");
+              } else if (p >= 0.67 && p < 0.78) {
+                setActiveTab("why");
+              }
+            },
           },
         });
+
+        scrollTriggerRef.current = tl.scrollTrigger || null;
 
         // STEP 1: SAMURAI BLADE SLICES & CRISP TEXT REVEAL (0.0 -> 0.15)
         tl.fromTo(
@@ -294,10 +320,10 @@ export default function ZoomScrollReel() {
         ref={darkPanelRef}
         className="fixed inset-0 w-full h-full min-h-screen z-40 bg-[#0A0A0A] text-white px-6 sm:px-12 md:px-20 pt-16 sm:pt-20 pb-8 sm:pb-12 flex flex-col justify-between overflow-hidden opacity-0 scale-50 rounded-none pointer-events-auto hidden transform-gpu will-change-transform"
       >
-        {/* TOP SUBMENU BAR - STICKY, HIGH-CONTRAST, 100% CLICKABLE */}
+        {/* TOP SUBMENU BAR - STICKY, HIGH-CONTRAST, 100% CLICKABLE WITH SCROLL SYNC */}
         <div className="w-full max-w-7xl mx-auto flex items-center gap-6 sm:gap-10 font-sans font-bold text-lg sm:text-2xl tracking-tight z-50 pt-4 pb-4">
           <button
-            onClick={() => setActiveTab("about")}
+            onClick={() => handleTabClick("about")}
             className="relative inline-flex items-center gap-2.5 cursor-pointer whitespace-nowrap hover:scale-105 transition-all pointer-events-auto group"
           >
             {activeTab === "about" ? (
@@ -313,7 +339,7 @@ export default function ZoomScrollReel() {
           <span className="text-zinc-700 font-light select-none">|</span>
 
           <button
-            onClick={() => setActiveTab("approach")}
+            onClick={() => handleTabClick("approach")}
             className="relative inline-flex items-center gap-2.5 cursor-pointer whitespace-nowrap hover:scale-105 transition-all pointer-events-auto group"
           >
             {activeTab === "approach" ? (
@@ -329,7 +355,7 @@ export default function ZoomScrollReel() {
           <span className="text-zinc-700 font-light select-none">|</span>
 
           <button
-            onClick={() => setActiveTab("why")}
+            onClick={() => handleTabClick("why")}
             className="relative inline-flex items-center gap-2.5 cursor-pointer whitespace-nowrap hover:scale-105 transition-all pointer-events-auto group"
           >
             {activeTab === "why" ? (
