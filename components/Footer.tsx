@@ -26,7 +26,7 @@ export default function Footer({ onOpenCalendly }: FooterProps) {
           <div className="w-full flex justify-center lg:justify-end">
             <button
               onClick={onOpenCalendly}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 sm:gap-4 px-6 sm:px-14 py-4 sm:py-8 rounded-none bg-[#7E22CE] hover:bg-[#6B21A8] text-white font-sans font-black text-xl sm:text-5xl md:text-6xl tracking-tight rotate-0 sm:-rotate-12 hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out shadow-[0_20px_50px_rgba(126,34,206,0.4)] cursor-pointer group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 sm:gap-4 px-6 sm:px-14 py-4 sm:py-8 rounded-none bg-[#7E22CE] hover:bg-[#6B21A8] text-white font-sans font-black text-xl sm:text-5xl md:text-6xl tracking-tight rotate-0 sm:-rotate-12 hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out cursor-pointer group"
             >
               <span>Let&apos;s chat</span>
               <ArrowUpRight className="w-6 h-6 sm:w-12 sm:h-12 text-white group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
