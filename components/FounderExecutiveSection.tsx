@@ -34,15 +34,13 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
 
       const mm = gsap.matchMedia();
 
-      // Desktop & Mobile Responsive GSAP ScrollTrigger Setup
-      mm.add({ isDesktop: "(min-width: 768px)", isMobile: "(max-width: 767px)" }, (ctx) => {
-        const { isMobile } = ctx.conditions as { isMobile: boolean };
-
+      // DESKTOP ONLY GSAP ScrollTrigger Setup (min-width: 640px)
+      mm.add("(min-width: 640px)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: isMobile ? "+=160%" : "+=220%",
+            end: "+=150%",
             scrub: 0.8,
             pin: true,
             pinSpacing: true,
@@ -50,7 +48,7 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           },
         });
 
-        // STEP 1: PORTRAIT CARD ZOOM & 3D PARALLAX TILT (0.0 -> 0.25)
+        // STEP 1: PORTRAIT CARD ZOOM & 3D PARALLAX TILT
         tl.fromTo(
           portraitCardRef.current,
           { scale: 0.96, opacity: 0.9, rotateX: 6 },
@@ -63,7 +61,7 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           0
         );
 
-        // STEP 2: DARK FRAME SLIDES UP OVER SOFT WHITE PAGE (0.25 -> 0.60)
+        // STEP 2: DARK FRAME SLIDES UP OVER SOFT WHITE PAGE
         tl.set(slideUpFrameRef.current, { display: "flex" }, 0.25).fromTo(
           slideUpFrameRef.current,
           { y: "100%", opacity: 0 },
@@ -71,27 +69,27 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
           0.26
         );
 
-        // 3 Diagonal Kinetic Color Blocks - Scrub rotation bi-directionally
+        // 3 Diagonal Kinetic Color Blocks
         tl.fromTo(
           block1Ref.current,
-          { x: isMobile ? -80 : -200, rotation: -28, opacity: 0 },
+          { x: -200, rotation: -28, opacity: 0 },
           { x: 0, rotation: -14, opacity: 1, ease: "power2.out" },
           0.32
         )
           .fromTo(
             block2Ref.current,
-            { x: isMobile ? -120 : -300, rotation: -28, opacity: 0 },
+            { x: -300, rotation: -28, opacity: 0 },
             { x: 0, rotation: -14, opacity: 1, ease: "power2.out" },
             0.38
           )
           .fromTo(
             block3Ref.current,
-            { x: isMobile ? -100 : -250, rotation: -28, opacity: 0 },
+            { x: -250, rotation: -28, opacity: 0 },
             { x: 0, rotation: -14, opacity: 1, ease: "power2.out" },
             0.44
           );
 
-        // STEP 3: TEXT HIGHLIGHTS ON SCROLL WITH OUR COLORS (0.60 -> 1.0)
+        // STEP 3: TEXT HIGHLIGHTS ON SCROLL
         tl.fromTo(
           textLine1Ref.current,
           { color: "#334155", opacity: 0.25 },
@@ -145,33 +143,33 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
     <section
       id="founder-brand"
       ref={sectionRef}
-      className="w-full min-h-screen bg-[#EFEFEA] text-[#0A0A0A] px-4 sm:px-8 md:px-16 py-12 md:py-0 relative overflow-hidden select-none flex items-center justify-center border-t border-black/10"
+      className="w-full min-h-screen md:min-h-screen bg-[#EFEFEA] text-[#0A0A0A] px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-0 relative overflow-hidden select-none flex items-center justify-center border-t border-black/10"
     >
       {/* SOFT OFF-WHITE CONTENT CONTAINER */}
-      <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-16 my-auto">
+      <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 items-center gap-6 sm:gap-8 lg:gap-16 my-auto py-4">
         {/* LEFT COLUMN: ELEGANT PORTRAIT CONTAINER */}
         <div className="lg:col-span-5 relative w-full group">
           {/* SLEEK NEUTRAL BACKDROP SHADOW */}
           <div className="absolute -inset-4 bg-black/10 blur-2xl rounded-3xl pointer-events-none" />
 
-          {/* PORTRAIT CARD FRAME */}
+          {/* PORTRAIT CARD FRAME - MAXIMUM VISIBILITY & FULL VIBRANT COLOR ON MOBILE */}
           <div
             ref={portraitCardRef}
-            className="relative w-full h-[360px] sm:h-[480px] lg:h-[560px] rounded-3xl sm:rounded-[36px] p-2 sm:p-2.5 bg-zinc-900 border border-black/20 shadow-2xl shadow-black/30 transform-gpu will-change-transform"
+            className="relative w-full h-[500px] sm:h-[520px] lg:h-[560px] rounded-2xl sm:rounded-[36px] p-2 sm:p-2.5 bg-zinc-900 border border-black/20 shadow-2xl shadow-black/30 transform-gpu will-change-transform"
           >
             {/* INNER PORTRAIT IMAGE HOLDER */}
-            <div className="relative w-full h-full rounded-2xl sm:rounded-[28px] overflow-hidden bg-zinc-950 border border-white/10">
+            <div className="relative w-full h-full rounded-xl sm:rounded-[28px] overflow-hidden bg-zinc-950 border border-white/10">
               <div ref={portraitZoomRef} className="relative w-full h-full transform-gpu will-change-transform z-10">
                 <img
                   src="/user_portrait.jpg"
                   alt="sgr Founder & Full Stack Lead Engineer"
-                  className="w-full h-full object-cover object-center grayscale contrast-125 brightness-105 transition-all duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover object-top contrast-110 brightness-110 transition-all duration-700 ease-out group-hover:scale-105"
                 />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none z-20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-20" />
 
-              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white font-mono text-[10px] sm:text-xs uppercase tracking-widest flex items-center justify-between z-30">
+              <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 text-white font-mono text-[9px] sm:text-xs uppercase tracking-widest flex items-center justify-between z-30">
                 <div>FULL STACK LEAD ENGINEER</div>
                 <div className="text-[#FF5500] font-bold flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse" />
@@ -183,14 +181,14 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
         </div>
 
         {/* RIGHT COLUMN: EDITORIAL CONTENT & DIRECTORY */}
-        <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8">
-          <div className="flex items-center gap-4 sm:gap-8 md:gap-12 font-sans font-bold text-base sm:text-lg md:text-xl tracking-tight border-b border-black/10 pb-4 sm:pb-6 overflow-x-auto">
+        <div className="lg:col-span-7 flex flex-col justify-center space-y-4 sm:space-y-8">
+          <div className="flex items-center gap-3 sm:gap-8 md:gap-12 font-sans font-bold text-sm sm:text-lg md:text-xl tracking-tight border-b border-black/10 pb-3 sm:pb-6 overflow-x-auto">
             <button
               onClick={() => setActiveTab("saas")}
-              className="relative inline-flex items-center gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
+              className="relative inline-flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
             >
               {activeTab === "saas" && (
-                <div className="w-3 h-6 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
+                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
               )}
               <span className={activeTab === "saas" ? "text-black font-extrabold" : "text-zinc-400"}>
                 SaaS & Full Stack
@@ -201,10 +199,10 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
 
             <button
               onClick={() => setActiveTab("visual")}
-              className="relative inline-flex items-center gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
+              className="relative inline-flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
             >
               {activeTab === "visual" && (
-                <div className="w-3 h-6 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
+                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
               )}
               <span className={activeTab === "visual" ? "text-black font-extrabold" : "text-zinc-400"}>
                 Visual Content
@@ -215,10 +213,10 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
 
             <button
               onClick={() => setActiveTab("motion")}
-              className="relative inline-flex items-center gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
+              className="relative inline-flex items-center gap-1.5 sm:gap-2 cursor-pointer whitespace-nowrap hover:opacity-80 transition-opacity"
             >
               {activeTab === "motion" && (
-                <div className="w-3 h-6 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
+                <div className="w-2.5 h-5 sm:w-3.5 sm:h-8 bg-[#FF5500] -rotate-45 rounded-xs shadow-[0_0_12px_rgba(255,85,0,0.7)]" />
               )}
               <span className={activeTab === "motion" ? "text-black font-extrabold" : "text-zinc-400"}>
                 Motion & 3D
@@ -226,11 +224,11 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
             </button>
           </div>
 
-          <h2 className="font-sans font-medium text-lg sm:text-2xl lg:text-4xl tracking-tight leading-[1.3] text-zinc-900 max-w-2xl min-h-[100px] sm:min-h-[140px] flex items-center transition-all duration-300">
+          <h2 className="font-sans font-medium text-sm sm:text-2xl lg:text-4xl tracking-tight leading-normal sm:leading-[1.3] text-zinc-900 max-w-2xl min-h-0 sm:min-h-[140px] flex items-center transition-all duration-300">
             {currentContent.headline}
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2 sm:pt-4 border-t border-black/10 font-mono text-xs md:text-sm text-zinc-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 pt-2 sm:pt-4 border-t border-black/10 font-mono text-xs md:text-sm text-zinc-700">
             <div className="space-y-2 sm:space-y-3">
               {currentContent.col1.map((item, i) => (
                 <div key={i} className="flex items-center gap-2 font-bold text-zinc-800 hover:text-black transition-colors">
@@ -262,10 +260,10 @@ export default function FounderExecutiveSection({ onOpenCalendly }: FounderExecu
         </div>
       </div>
 
-      {/* DARK KINETIC SLIDE-UP FRAME */}
+      {/* DESKTOP DARK KINETIC SLIDE-UP FRAME (hidden on mobile) */}
       <div
         ref={slideUpFrameRef}
-        className="fixed inset-0 w-full h-full min-h-screen z-50 bg-[#0A0A0A] text-white hidden items-center justify-center p-6 sm:p-12 md:p-20 overflow-hidden transform-gpu will-change-transform rounded-none border-none outline-none"
+        className="fixed inset-0 w-full h-full min-h-screen z-50 bg-[#0A0A0A] text-white hidden md:flex items-center justify-center p-6 sm:p-12 md:p-20 overflow-hidden transform-gpu will-change-transform rounded-none border-none outline-none"
       >
         <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-16">
           <div className="lg:col-span-5 relative h-[220px] sm:h-[380px] flex flex-col justify-center items-center gap-3 sm:gap-6">

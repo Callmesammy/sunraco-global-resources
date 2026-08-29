@@ -161,6 +161,7 @@ export default function IntroPreloader({ onComplete }: IntroPreloaderProps) {
           {
             opacity: 0,
             display: "none",
+            pointerEvents: "none",
             duration: 0.2,
           },
           4.55

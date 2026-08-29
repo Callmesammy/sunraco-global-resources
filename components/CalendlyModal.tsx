@@ -32,7 +32,12 @@ export default function CalendlyModal({ isOpen, onClose }: CalendlyModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+    <div
+      data-lenis-prevent="true"
+      data-lenis-prevent-touch="true"
+      data-lenis-prevent-wheel="true"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10"
+    >
       {/* Dark Blur Backdrop */}
       <div
         className="absolute inset-0 bg-black/85 backdrop-blur-xl transition-opacity animate-in fade-in duration-300"
@@ -40,7 +45,14 @@ export default function CalendlyModal({ isOpen, onClose }: CalendlyModalProps) {
       />
 
       {/* Modal Container */}
-      <div className="relative z-10 w-full max-w-3xl rounded-none bg-[#141414] border-2 border-white/20 p-6 sm:p-10 text-white shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+      <div
+        data-lenis-prevent="true"
+        data-lenis-prevent-touch="true"
+        data-lenis-prevent-wheel="true"
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+        className="relative z-10 w-full max-w-3xl rounded-none bg-[#141414] border-2 border-white/20 p-6 sm:p-10 text-white shadow-2xl overflow-y-auto max-h-[90vh] overscroll-contain animate-in zoom-in-95 duration-300"
+      >
         {/* Top Header */}
         <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-6">
           <div className="flex items-center gap-3">

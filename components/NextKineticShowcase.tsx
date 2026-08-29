@@ -20,14 +20,14 @@ export default function NextKineticShowcase({}: NextKineticShowcaseProps) {
 
       const mm = gsap.matchMedia();
 
-      mm.add({ isDesktop: "(min-width: 768px)", isMobile: "(max-width: 767px)" }, (ctx) => {
+      mm.add({ isDesktop: "(min-width: 640px)", isMobile: "(max-width: 639px)" }, (ctx) => {
         const { isMobile } = ctx.conditions as { isMobile: boolean };
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: isMobile ? "+=150%" : "+=200%",
+            end: isMobile ? "+=100%" : "+=140%",
             scrub: 0.8,
             pin: true,
             pinSpacing: true,

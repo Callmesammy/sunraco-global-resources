@@ -9,15 +9,18 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Prevent mobile address bar height changes from firing disruptive ScrollTrigger layout refreshes during scroll
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
     // Initialize Lenis Smooth Scroll with butter-smooth 60fps physics
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 0.95,
-      touchMultiplier: 1.8,
+      touchMultiplier: 1.5,
     });
 
     // Synchronize Lenis with GSAP ScrollTrigger ticker seamlessly
@@ -34,11 +37,12 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     (window as any).lenis = lenis;
 
     // Refresh ScrollTrigger to recalculate exact pin bounds
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 100);
+    }, 150);
 
     return () => {
+      clearTimeout(timer);
       delete (window as any).lenis;
       lenis.destroy();
       gsap.ticker.remove(updateRaf);
@@ -47,3 +51,4 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
   return <>{children}</>;
 }
+

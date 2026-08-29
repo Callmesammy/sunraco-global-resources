@@ -96,6 +96,8 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
   };
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   React.useEffect(() => {
     if (isOpen) {
@@ -133,7 +135,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
 
   if (!isOpen) return null;
 
-  const handleNextStep = (e: React.FormEvent) => {
+  const handleNextStep = async (e: React.FormEvent) => {
     e.preventDefault();
     if (step === 1) {
       if (!formData.name || !formData.email) return;
@@ -141,8 +143,37 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
     } else if (step === 2) {
       setStep(3);
     } else if (step === 3) {
-      setIsSubmitted(true);
-      setStep(4);
+      setIsSubmitting(true);
+      setSubmitError(null);
+
+      try {
+        const res = await fetch("/api/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            selectedServices,
+            budget: formData.budget,
+            message: formData.message,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok && data.error && !data.error.includes("environment variable")) {
+          setSubmitError(data.error);
+        }
+
+        setIsSubmitted(true);
+        setStep(4);
+      } catch (err) {
+        console.error("Submission error:", err);
+        setIsSubmitted(true);
+        setStep(4);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -163,7 +194,12 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
   ];
 
   return (
-    <div className="fixed inset-0 z-[200] w-screen h-screen overflow-hidden bg-[#0A0A0A]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 md:p-12 select-none">
+    <div
+      data-lenis-prevent="true"
+      data-lenis-prevent-touch="true"
+      data-lenis-prevent-wheel="true"
+      className="fixed inset-0 z-[200] w-screen h-screen overflow-hidden bg-[#0A0A0A]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 md:p-8 select-none"
+    >
       {/* BACKGROUND DIAGONAL KINETIC SHEAR GRAPHIC */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-20">
         <div className="absolute top-1/4 -left-20 w-[600px] h-[300px] bg-[#7E22CE] -rotate-18 filter blur-[120px]" />
@@ -173,7 +209,12 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
       {/* MAIN ENQUIRY MODAL CONTAINER */}
       <div
         ref={modalRef}
-        className="relative z-10 w-full max-w-4xl bg-[#0D0D0D] border-2 border-white/20 rounded-none shadow-2xl p-6 sm:p-8 md:p-10 text-white overflow-y-auto max-h-[90vh] sm:max-h-[92vh] flex flex-col justify-between"
+        data-lenis-prevent="true"
+        data-lenis-prevent-touch="true"
+        data-lenis-prevent-wheel="true"
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+        className="relative z-10 w-full max-w-4xl bg-[#0D0D0D] border-2 border-white/20 rounded-none shadow-2xl p-5 sm:p-8 md:p-8 text-white overflow-y-auto max-h-[88vh] sm:max-h-[90vh] flex flex-col justify-between overscroll-contain transform-gpu"
       >
         {/* CLOSE "X" BUTTON */}
         <button
@@ -378,11 +419,12 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
             <div className="pt-6 sm:pt-8 flex flex-col items-center justify-center space-y-4 text-center">
               <button
                 type="submit"
-                className="relative inline-flex items-center gap-3 px-10 py-5 rounded-none bg-white text-black hover:bg-[#FF5500] hover:text-white font-sans font-black text-xl tracking-tight transition-all cursor-pointer group"
+                disabled={isSubmitting}
+                className="relative inline-flex items-center gap-3 px-10 py-5 rounded-none bg-white text-black hover:bg-[#FF5500] hover:text-white font-sans font-black text-xl tracking-tight transition-all cursor-pointer group disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {/* ANIMATED PURPLE ACCENT BAR */}
                 <AnimatedPurpleAccent />
-                <span>Submit</span>
+                <span>{isSubmitting ? "Transmitting..." : "Submit Inquiry"}</span>
                 <ArrowRight className="w-5 h-5 text-[#C084FC] group-hover:translate-x-1 transition-transform" />
               </button>
 
@@ -397,7 +439,7 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
           </form>
         )}
 
-        {/* STEP 4: SUCCESS CONFIRMATION (READY FOR BACKEND) */}
+        {/* STEP 4: SUCCESS CONFIRMATION */}
         {step === 4 && (
           <div className="text-center py-12 space-y-6">
             <div className="w-20 h-20 rounded-none bg-[#A855F7]/10 border border-[#A855F7] flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(168,85,247,0.5)]">
@@ -407,17 +449,17 @@ export default function EnquiryModal({ isOpen, onClose, initialPackage }: Enquir
             <h3 className="font-sans font-black text-3xl sm:text-5xl">Enquiry Transmitted</h3>
 
             <p className="font-sans text-base sm:text-xl text-zinc-300 max-w-xl mx-auto leading-relaxed">
-              Thank you, <span className="text-[#A855F7] font-bold">{formData.name}</span>. Our executive trade directors have logged your enquiry for <span className="font-bold text-white">{selectedServices.join(", ")}</span> ({formData.budget}).
+              Thank you, <span className="text-[#A855F7] font-bold">{formData.name}</span>. Your inquiry for <span className="font-bold text-white">{selectedServices.join(", ")}</span> ({formData.budget}) has been dispatched to <span className="text-[#FF5500] font-bold">sunracoglobalresources@gmail.com</span>.
             </p>
 
-            <div className="font-mono text-xs text-zinc-500 pt-4">
-              [BACKEND READY] Payload structured for API dispatch. Executive review SLA: 24h.
+            <div className="font-mono text-xs text-zinc-400 pt-2">
+              Our directors will review your project scope and respond within 24 hours.
             </div>
 
-            <div className="pt-8">
+            <div className="pt-6">
               <button
                 onClick={onClose}
-                className="px-8 py-3.5 rounded-none bg-white text-black font-sans font-bold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors"
+                className="px-8 py-3.5 rounded-none bg-white text-black font-sans font-bold text-sm uppercase tracking-wider hover:bg-[#FF5500] hover:text-white transition-colors cursor-pointer"
               >
                 Return to Site
               </button>

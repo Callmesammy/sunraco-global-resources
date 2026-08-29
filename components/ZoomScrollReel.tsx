@@ -47,16 +47,16 @@ export default function ZoomScrollReel() {
 
       const mm = gsap.matchMedia();
 
-      mm.add({ isDesktop: "(min-width: 768px)", isMobile: "(max-width: 767px)" }, (ctx) => {
+      mm.add({ isDesktop: "(min-width: 640px)", isMobile: "(max-width: 639px)" }, (ctx) => {
         const { isMobile } = ctx.conditions as { isMobile: boolean };
 
-        // Main Pinned Timeline - Responsive & Paced efficiently without frozen dead zones
+        // Main Pinned Timeline - Generous pause window for interactive submenu reading
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: isMobile ? "+=350%" : "+=500%",
-            scrub: 0.4,
+            end: isMobile ? "+=300%" : "+=420%",
+            scrub: 0.5,
             pin: true,
             pinSpacing: true,
             anticipatePin: 1,
@@ -75,7 +75,7 @@ export default function ZoomScrollReel() {
           },
         });
 
-        // STEP 1: SAMURAI BLADE SLICES & CRISP TEXT REVEAL WITH BI-DIRECTIONAL COUNTER-SHEAR (0.0 -> 0.20)
+        // STEP 1: SAMURAI BLADE SLICES & CRISP TEXT REVEAL (0.0 -> 0.15)
         tl.fromTo(
           slice1Ref.current,
           { strokeDashoffset: 1000, opacity: 0 },
@@ -104,55 +104,60 @@ export default function ZoomScrollReel() {
           .fromTo(line6Ref.current, { opacity: 0.3, y: 20, x: 30 }, { opacity: 1, y: 0, x: 0, ease: "power2.out" }, 0.10)
           .fromTo(line7Ref.current, { opacity: 0.3, y: 20, x: -30 }, { opacity: 1, y: 0, x: 0, ease: "power2.out" }, 0.12);
 
-        // STEP 2: DARK KINETIC PANEL ZOOMS IN (0.18 -> 0.40)
-        tl.set(darkPanelRef.current, { display: "flex" }, 0.18).fromTo(
+        // STEP 2: DARK KINETIC PANEL ZOOMS IN & LOCKS FOR INTERACTION (0.15 -> 0.25)
+        tl.set(darkPanelRef.current, { display: "flex" }, 0.15).fromTo(
           darkPanelRef.current,
           { scale: 0.35, opacity: 0, borderRadius: "2rem" },
           { scale: 1.0, opacity: 1, borderRadius: "0rem", ease: "power2.out" },
-          0.19
+          0.16
         );
 
-        tl.to(oldContentRef.current, { opacity: 0 }, 0.24);
-        tl.to(darkPanelRef.current, { opacity: 1 }, 0.38);
+        tl.to(oldContentRef.current, { opacity: 0 }, 0.18);
+        tl.to(darkPanelRef.current, { opacity: 1 }, 0.25);
 
-        // STEP 3: SOLID DEEP PURPLE COVER TAKEOVER (0.40 -> 0.55)
-        tl.set(solidPurpleCoverRef.current, { display: "block" }, 0.40).fromTo(
+        // =========================================================================
+        // EXTENDED INTERACTIVE HOLDING DELAY (0.25 -> 0.60):
+        // Dark Panel stays 100% visible & static so user has ample time to click submenus!
+        // =========================================================================
+
+        // STEP 3: SOLID DEEP PURPLE COVER TAKEOVER (0.60 -> 0.74)
+        tl.set(solidPurpleCoverRef.current, { display: "block" }, 0.60).fromTo(
           solidPurpleCoverRef.current,
           { y: "100%", opacity: 0 },
           { y: "0%", opacity: 1, ease: "power2.inOut" },
-          0.41
+          0.61
         );
 
-        // STEP 4: DISSOLVE TO WHITE CANVAS & CARDS SLIDE IN (0.55 -> 0.75)
-        tl.set(whiteScreenStageRef.current, { display: "flex" }, 0.54)
-          .to(solidPurpleCoverRef.current, { opacity: 0, ease: "power2.inOut" }, 0.55)
+        // STEP 4: DISSOLVE TO WHITE CANVAS & CARDS SLIDE IN (0.74 -> 0.88)
+        tl.set(whiteScreenStageRef.current, { display: "flex" }, 0.73)
+          .to(solidPurpleCoverRef.current, { opacity: 0, ease: "power2.inOut" }, 0.74)
           .fromTo(
             whiteScreenStageRef.current,
             { opacity: 0 },
             { opacity: 1, ease: "power2.inOut" },
-            0.55
+            0.74
           )
           .fromTo(
             kineticBarRef.current,
             { scale: 0.4, rotation: -18, x: 0, opacity: 0 },
             { scale: 1.0, rotation: -18, x: 0, opacity: 1, ease: "power2.out" },
-            0.56
+            0.75
           )
           .fromTo(
             softAccentPanelRef.current,
             { x: -60, y: 20, rotation: -18, opacity: 0 },
             { x: -40, y: 10, rotation: -18, opacity: 1, ease: "power2.out" },
-            0.58
+            0.76
           );
 
         // Cards fan out cleanly without jitter
-        tl.fromTo(card1Ref.current, { x: -220, opacity: 0, rotation: -15 }, { x: 0, opacity: 1, rotation: -8, ease: "power2.out" }, 0.62)
-          .fromTo(card2Ref.current, { x: -120, opacity: 0, rotation: -10 }, { x: 0, opacity: 1, rotation: -4, ease: "power2.out" }, 0.64)
-          .fromTo(card3Ref.current, { scale: 0.6, opacity: 0 }, { scale: 1.0, opacity: 1, ease: "power2.out" }, 0.66)
-          .fromTo(card4Ref.current, { x: 120, opacity: 0, rotation: 10 }, { x: 0, opacity: 1, rotation: 4, ease: "power2.out" }, 0.68)
-          .fromTo(card5Ref.current, { x: 220, opacity: 0, rotation: 15 }, { x: 0, opacity: 1, rotation: 8, ease: "power2.out" }, 0.70);
+        tl.fromTo(card1Ref.current, { x: -220, opacity: 0, rotation: -15 }, { x: 0, opacity: 1, rotation: -8, ease: "power2.out" }, 0.78)
+          .fromTo(card2Ref.current, { x: -120, opacity: 0, rotation: -10 }, { x: 0, opacity: 1, rotation: -4, ease: "power2.out" }, 0.80)
+          .fromTo(card3Ref.current, { scale: 0.6, opacity: 0 }, { scale: 1.0, opacity: 1, ease: "power2.out" }, 0.82)
+          .fromTo(card4Ref.current, { x: 120, opacity: 0, rotation: 10 }, { x: 0, opacity: 1, rotation: 4, ease: "power2.out" }, 0.84)
+          .fromTo(card5Ref.current, { x: 220, opacity: 0, rotation: 15 }, { x: 0, opacity: 1, rotation: 8, ease: "power2.out" }, 0.86);
 
-        // STEP 5: ROTATE CARDS TO UPRIGHT & SPOTLIGHT FOCUS (0.75 -> 1.00)
+        // STEP 5: ROTATE CARDS TO UPRIGHT & SPOTLIGHT FOCUS (0.88 -> 1.00)
         tl.to(
           [
             kineticBarRef.current,
@@ -164,10 +169,10 @@ export default function ZoomScrollReel() {
             card5Ref.current,
           ],
           { rotation: 0, y: 0, ease: "power2.inOut" },
-          0.76
+          0.89
         );
 
-        tl.to(card3Ref.current, { scale: isMobile ? 1.05 : 1.15, ease: "power2.inOut" }, 0.88);
+        tl.to(card3Ref.current, { scale: isMobile ? 1.05 : 1.15, ease: "power2.inOut" }, 0.95);
         tl.to(whiteScreenStageRef.current, { opacity: 1 }, 1.0);
       });
     },
@@ -248,26 +253,26 @@ export default function ZoomScrollReel() {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="col-span-1 lg:col-span-7 h-screen relative flex flex-col justify-center px-6 sm:px-12 md:px-16 py-0 bg-white z-20 overflow-hidden space-y-3 sm:space-y-4 md:space-y-5">
-          <div ref={line1Ref} className="font-mono font-black text-xs sm:text-base md:text-lg tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity">
+        <div className="col-span-1 lg:col-span-7 h-screen relative flex flex-col justify-center px-4 sm:px-12 md:px-16 py-0 bg-white z-20 overflow-hidden space-y-4 sm:space-y-4 md:space-y-5">
+          <div ref={line1Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             We are sgr. We architect high-impact SaaS applications & motion web engines.
           </div>
-          <div ref={line2Ref} className="font-mono font-black text-xs sm:text-base md:text-lg tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity">
+          <div ref={line2Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             Full Stack Engineering. .NET Framework, Azure Cloud, Docker & PostgreSQL.
           </div>
-          <div ref={line3Ref} className="font-mono font-black text-xs sm:text-base md:text-lg tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity">
+          <div ref={line3Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             Next.js, Node.js & Three.js 3D canvas architectures built for scale.
           </div>
-          <div ref={line4Ref} className="font-mono font-black text-xs sm:text-base md:text-lg tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity">
+          <div ref={line4Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             Integrating 60FPS GSAP physics, shear reveals & interactive cursor spotlights.
           </div>
-          <div ref={line5Ref} className="font-mono font-black text-xs sm:text-base md:text-lg tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity">
+          <div ref={line5Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             Digital Brand Refreshes, Logo Design, UI/UX Mockups, Sales Decks & Assets.
           </div>
-          <div ref={line6Ref} className="font-mono font-black text-xs sm:text-base md:text-lg tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity">
+          <div ref={line6Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             Precision engineering in motion. Institutional grade cloud scalability.
           </div>
-          <div ref={line7Ref} className="font-mono font-black text-xs sm:text-base md:text-lg tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity">
+          <div ref={line7Ref} className="font-mono font-black text-lg sm:text-xl md:text-lg tracking-tight sm:tracking-wider text-[#0A0A0A] uppercase opacity-90 transition-opacity leading-snug">
             Unwavering digital excellence and high-velocity software execution.
           </div>
         </div>
